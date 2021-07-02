@@ -71,7 +71,7 @@ namespace Projekt_Programowanie_WSIiZ
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            listBox1.SelectedIndex = 0;
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -126,22 +126,25 @@ namespace Projekt_Programowanie_WSIiZ
         {
             int modyfikator = int.Parse(textBox1.Text);
             modyfikatory.Add(modyfikator);
-            kosci.Add(new Kostka(int.Parse(listBox1.SelectedItem.ToString())));
-           
-            switch (modyfikator)
-            {
-                case 0:
-                    textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + ", ";
-                    break;
-                case > 0:
-                    textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + "+" + textBox1.Text + ", ";
-                    break;
+            
+                kosci.Add(new Kostka(int.Parse(listBox1.SelectedItem.ToString())));
 
-                case < 0:
-                    textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + textBox1.Text + ", ";
-                    break;
+                switch (modyfikator)
+                {
+                    case 0:
+                        textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + ", ";
+                        break;
+                    case > 0:
+                        textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + "+" + textBox1.Text + ", ";
+                        break;
 
-            }
+                    case < 0:
+                        textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + textBox1.Text + ", ";
+                        break;
+
+                }
+            
+            
             
         }
 
