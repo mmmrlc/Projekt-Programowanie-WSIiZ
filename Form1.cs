@@ -32,7 +32,18 @@ namespace Projekt_Programowanie_WSIiZ
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int xxxx;
+            textBox3.Text = "";
+            textBox4.Text = "";
+            List<int> rzuty = new List<int>();
+            int iloscKosci = kosci.Count();
+            for (int i = 0; i < iloscKosci; i++)
+            {
+                rzuty.Add(kosci[i].rzut() + modyfikatory[i]);
+                textBox3.Text = textBox3.Text + rzuty[i].ToString() + ", ";
+            }
+            
+            
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -62,6 +73,14 @@ namespace Projekt_Programowanie_WSIiZ
 
         private void button3_Click(object sender, EventArgs e)
         {
+            textBox1.Text = "0";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            checkBox1.Checked = false;
+            listBox1.SelectedIndex = 0;
+            kosci.Clear();
+            modyfikatory.Clear();
 
         }
 
@@ -100,6 +119,25 @@ namespace Projekt_Programowanie_WSIiZ
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int mod = int.Parse(textBox1.Text);
+            mod += 1;
+            textBox1.Text = mod.ToString();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int mod = int.Parse(textBox1.Text);
+            mod -= 1;
+            textBox1.Text = mod.ToString();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "0";
         }
     }
 }

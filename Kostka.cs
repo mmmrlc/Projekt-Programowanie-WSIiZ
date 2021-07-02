@@ -18,8 +18,9 @@ namespace Projekt_Programowanie_WSIiZ
         public int rzut()
         {
             int wynik;
+            Random rand = new Random();
 
-            wynik = wielkosc;
+            wynik = rand.Next(1,wielkosc+1);
             return wynik;
         }
 
