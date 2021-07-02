@@ -24,5 +24,9 @@ namespace Projekt_Programowanie_WSIiZ
             return wynik;
         }
 
+        public int getWielkosc()
+        {
+            return wielkosc;
+        }
     }
 }

@@ -40,10 +40,33 @@ namespace Projekt_Programowanie_WSIiZ
             {
                 rzuty.Add(kosci[i].rzut() + modyfikatory[i]);
                 textBox3.Text = textBox3.Text + rzuty[i].ToString() + ", ";
+                if (rzuty[i] < 1)
+                    rzuty[i] = 1;
             }
-            
-            
-            
+
+            try
+            {
+                if (checkBox1.Checked || iloscKosci == 1)
+                {
+
+                    int najwyzszy = rzuty.Max();
+                    Kostka najwyzszaKostka = kosci[rzuty.IndexOf(najwyzszy)];
+                    textBox4.Text = najwyzszy.ToString();
+                    if (najwyzszy >= najwyzszaKostka.getWielkosc())
+                        textBox4.Text = textBox4.Text + " - krytyczny sukces ";
+                    else if (najwyzszy == 1)
+                        textBox4.Text = textBox4.Text + " - krytyczna porazka ";
+
+                }
+
+
+                else
+                    textBox4.Text = rzuty.Sum().ToString();
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("Musisz dodac kosc!");
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -101,14 +124,25 @@ namespace Projekt_Programowanie_WSIiZ
 
         private void button1_Click(object sender, EventArgs e)
         {
-            modyfikatory.Add(int.Parse(textBox1.Text));
+            int modyfikator = int.Parse(textBox1.Text);
+            modyfikatory.Add(modyfikator);
             kosci.Add(new Kostka(int.Parse(listBox1.SelectedItem.ToString())));
-            if (textBox1.Text == "0")
-                textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + ", ";
-            else if (int.Parse(textBox1.Text) > 0)
-                textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + "+" + textBox1.Text + ", ";
-            else
-                textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + textBox1.Text + ", ";
+           
+            switch (modyfikator)
+            {
+                case 0:
+                    textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + ", ";
+                    break;
+                case > 0:
+                    textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + "+" + textBox1.Text + ", ";
+                    break;
+
+                case < 0:
+                    textBox2.Text = textBox2.Text + listBox1.SelectedItem.ToString() + textBox1.Text + ", ";
+                    break;
+
+            }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
