@@ -40,8 +40,6 @@ namespace Projekt_Programowanie_WSIiZ
             {
                 rzuty.Add(kosci[i].rzut() + modyfikatory[i]);
                 textBox3.Text = textBox3.Text + rzuty[i].ToString() + ", ";
-                if (rzuty[i] < 1)
-                    rzuty[i] = 1;
             }
 
             try
@@ -51,6 +49,8 @@ namespace Projekt_Programowanie_WSIiZ
 
                     int najwyzszy = rzuty.Max();
                     Kostka najwyzszaKostka = kosci[rzuty.IndexOf(najwyzszy)];
+                    if (najwyzszy < 1)
+                        najwyzszy = 1;
                     textBox4.Text = najwyzszy.ToString();
                     if (najwyzszy >= najwyzszaKostka.getWielkosc())
                         textBox4.Text = textBox4.Text + " - krytyczny sukces ";
